@@ -1,0 +1,32 @@
+#include "pch.h"
+#include <iostream>
+#include <string.h>
+#include <Windows.h>
+ 
+using namespace std;
+const int BUFFER = 256;
+char s[5][BUFFER] = {};
+int i;
+char x = 'о';
+int ind = -1;
+int main()
+{
+​setlocale(0, "RUS");
+​for (i = 0; i < 5; i++) {
+​​cout << "Введите " << (i+1) << " строку: ";
+​​cin >> s[i];
+​​OemToCharA(s[i], s[i]);
+​​cout << endl;
+​​for (int j = 0; j < BUFFER; j++) {
+​​​if (s[i][j] == x) {
+​​​​ind = i;
+​​​​break;
+​​​}
+​​}
+   }
+ 
+​if (ind != -1) cout << "Строка с буквой 'о': " << s[ind] << endl;
+​else cout << "Строки с буквой 'о' не существует" << endl;
+​
+​system("pause");
+}
